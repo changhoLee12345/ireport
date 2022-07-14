@@ -21,8 +21,6 @@
 	<resources mapping="/widget/**" location="/widget/" />
 	<resources mapping="/index.html" location="/index.html" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
-		in the /WEB-INF/views directory -->
 	<beans:bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<beans:property name="defaultContentType" value="TEXT/HTML" />
 		<beans:property name="parameterName" value="type" />
@@ -34,6 +32,8 @@
 
 	<beans:bean p:order="1" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
 	<beans:bean p:order="2" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
