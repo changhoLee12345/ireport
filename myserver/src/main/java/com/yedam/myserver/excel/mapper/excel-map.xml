@@ -3,10 +3,10 @@
 <mapper namespace="com.yedam.myserver.excel.mapper.DeptService">
 
 <select id="getDeptListMap" resultType="map">
-	SELECT department_id "departmentId"
-	      ,department_name "departmentName"
-	      ,manager_id "managerId"
-	      ,location_id "locationId"
+	SELECT department_id "부서번호"
+	      ,department_name "부서명"
+	      ,manager_id "관리자"
+	      ,location_id "위치"
 	  FROM departments
 	 ORDER BY department_id
 </select>

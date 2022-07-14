@@ -132,7 +132,8 @@ public class ExcelController {
 //			}
 //		}
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		String[] header = { "departmentId", "departmentName", "managerId" };
+//		String[] header = { "departmentId", "departmentName", "managerId", "locationId" };
+		String[] header = { "부서번호", "부서명", "관리자", "위치" };
 		map.put("headers", header);
 		map.put("filename", "excel_dept");
 		map.put("datas", list);
