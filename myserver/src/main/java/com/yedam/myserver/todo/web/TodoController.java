@@ -15,27 +15,29 @@ import com.yedam.myserver.todo.vo.TodoVO;
 @CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 public class TodoController {
 
-	@Autowired TodoMapper mapper;
-	
+	@Autowired
+	TodoMapper mapper;
+
 	@GetMapping("/todoSelect")
 	public List<TodoVO> todoSelectList(TodoVO vo) {
 		return mapper.findAll();
 	}
-		
+
 	@GetMapping("/todoInsert")
 	public TodoVO todoInsert(TodoVO vo) {
-		 mapper.persist(vo);
-		 return vo;
+		mapper.persist(vo);
+		return vo;
 	}
-	
+
 	@GetMapping("/todoUpdate")
 	public TodoVO todoUpdate(TodoVO vo) {
-		 mapper.merge(vo);
-		 return vo;
-	}	
+		mapper.merge(vo);
+		return vo;
+	}
+
 	@GetMapping("/todoDelete")
 	public TodoVO todoDelete(TodoVO vo) {
-		 mapper.remove(vo);
-		 return vo;
-	}		
+		mapper.remove(vo);
+		return vo;
+	}
 }

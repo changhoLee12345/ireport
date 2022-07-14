@@ -11,34 +11,35 @@ import com.yedam.myserver.cart.vo.CartVO;
 
 @RestController
 public class CartController {
-	
-	@Autowired CartMapper mapper;
-	
-	//장바구니 전체조회
+
+	@Autowired
+	CartMapper mapper;
+
+	// 장바구니 전체조회
 	@RequestMapping("/cartSelectList")
 	public List<CartVO> cartSelectList() {
 		return mapper.findAll();
-	}	
-	
-	//장바구니 단건삭제
+	}
+
+	// 장바구니 단건삭제
 	@RequestMapping("/cartDelete")
 	public CartVO cartDelete(CartVO vo) {
 		mapper.remove(vo);
 		return vo;
 	}
-	
-	//장바구니 선택삭제
+
+	// 장바구니 선택삭제
 	@RequestMapping("/cartDeleteCheck")
 	public boolean cartDelete(String[] nos) {
-		for(String no : nos) {
+		for (String no : nos) {
 			CartVO vo = new CartVO();
 			vo.setNo(no);
 			mapper.remove(vo);
 		}
 		return true;
 	}
-	
-	//장바구니 전체삭제
+
+	// 장바구니 전체삭제
 	@RequestMapping("/cartDeleteAll")
 	public boolean cartDeleteAll() {
 		mapper.removeAll();

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.myserver.excel.mapper.DeptService">
+
+<select id="getDeptListMap" resultType="map">
+	SELECT department_id "departmentId"
+	      ,department_name "departmentName"
+	      ,manager_id "managerId"
+	      ,location_id "locationId"
+	  FROM departments
+	 ORDER BY department_id
+</select>
+
+</mapper>

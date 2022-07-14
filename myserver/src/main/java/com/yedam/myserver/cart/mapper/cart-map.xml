@@ -3,8 +3,7 @@
 <mapper namespace="com.yedam.myserver.cart.mapper.CartMapper">
 
 <!-- 장바구니 전체조회 --> 
-<select id="findAll" 
-        resultType="cartVO">
+<select id="findAll" resultType="cartVO">
 	SELECT *
 	  FROM CART
 	 ORDER BY NO  

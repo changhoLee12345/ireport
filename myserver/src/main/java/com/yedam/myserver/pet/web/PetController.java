@@ -14,24 +14,25 @@ import com.yedam.myserver.pet.vo.PetVO;
 @RestController
 public class PetController {
 
-	@Autowired PetMapper mapper;
-	
-	//pet 전체조회 
+	@Autowired
+	PetMapper mapper;
+
+	// pet 전체조회
 	@GetMapping("/petSelect")
 	public List<PetVO> petSelectList() {
 		return mapper.findPetAll();
 	}
 
-	//분양정보 등록
+	// 분양정보 등록
 	@GetMapping("/adoptSelect")
 	public List<AdoptVO> adoptSelectList() {
 		return mapper.findAdoptAll();
-	}	
+	}
 
-	//분양정보 등록
+	// 분양정보 등록
 	@PostMapping("/adoptInsert")
 	public PetVO petInsert(PetVO vo) {
-		 mapper.persist(vo);
-		 return vo;
+		mapper.persist(vo);
+		return vo;
 	}
 }
