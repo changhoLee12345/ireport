@@ -101,22 +101,22 @@ public class ExcelController {
 		out.print("엑셀 저장 완료");
 
 		// 다운로드
-		String downFileName = "excel.xls";
-		File uFile = new File(filename);
-		int fSize = (int) uFile.length(); // 파일크기
-		BufferedInputStream in = new BufferedInputStream(new FileInputStream(uFile));
-		String mimetype = "text/html";
+//		String downFileName = "excel.xls";
+//		File uFile = new File(filename);
+//		int fSize = (int) uFile.length(); // 파일크기
+//		BufferedInputStream in = new BufferedInputStream(new FileInputStream(uFile));
+//		String mimetype = "text/html";
 
-		response.setBufferSize(fSize);
-		response.setContentType(mimetype);
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + downFileName + "\"");
-		response.setContentLength(fSize);
+//		response.setBufferSize(fSize);
+//		response.setContentType(mimetype);
+//		response.setHeader("Content-Disposition", "attachment; filename=\"" + downFileName + "\"");
+//		response.setContentLength(fSize);
 
-		FileCopyUtils.copy(in, response.getOutputStream());
-		in.close();
-		uFile.delete(); // 파일삭제
-		response.getOutputStream().flush();
-		response.getOutputStream().close();
+//		FileCopyUtils.copy(in, response.getOutputStream());
+//		in.close();
+//		uFile.delete(); // 파일삭제
+//		response.getOutputStream().flush();
+//		response.getOutputStream().close();
 	}
 
 	// 엑셀출력
