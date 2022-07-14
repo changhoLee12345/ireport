@@ -47,10 +47,11 @@ public class ExcelController {
 	// 엑셀출력
 	@RequestMapping("/deptExcelCreate.do")
 	public void excelCreate(DeptSearchVO vo, HttpServletResponse response) throws IOException {
+
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;utf-8");
 
-		PrintWriter out = response.getWriter();
+//		PrintWriter out = response.getWriter();
 
 		// 엑셀 wookbook 생성
 		Workbook wb = new HSSFWorkbook(); // xls 버전
@@ -67,6 +68,10 @@ public class ExcelController {
 
 		// 부서목록 출력
 		List<Map<String, Object>> list = deptService.getDeptListMap(vo);
+		
+		// 헤더정보
+		String[] header = { "부서번호", "부서명", "관리자", "위치" };
+
 		Row row;
 		Cell cell;
 		Map<String, Object> map;
@@ -79,7 +84,9 @@ public class ExcelController {
 			while (iter.hasNext()) {
 				cell = row.createCell(j++);
 				Object field = map.get(iter.next());
+
 				System.out.println(field.getClass());
+
 				if (field instanceof String) {
 					cell.setCellValue((String) field);
 				} else if (field instanceof BigDecimal) {
@@ -97,47 +104,43 @@ public class ExcelController {
 		FileOutputStream fos = new FileOutputStream(filename);
 		wb.write(fos);
 		fos.close();
-
-		out.print("엑셀 저장 완료");
+//		out.print("엑셀 저장 완료");
 
 		// 다운로드
-//		String downFileName = "excel.xls";
-//		File uFile = new File(filename);
-//		int fSize = (int) uFile.length(); // 파일크기
-//		BufferedInputStream in = new BufferedInputStream(new FileInputStream(uFile));
-//		String mimetype = "text/html";
+		String downFileName = "deptList.xls";
+		File uFile = new File(filename);
+		int fSize = (int) uFile.length(); // 파일크기
+		BufferedInputStream in = new BufferedInputStream(new FileInputStream(uFile));
+		String mimetype = "text/html";
 
-//		response.setBufferSize(fSize);
-//		response.setContentType(mimetype);
-//		response.setHeader("Content-Disposition", "attachment; filename=\"" + downFileName + "\"");
-//		response.setContentLength(fSize);
+		response.setBufferSize(fSize);
+		response.setContentType(mimetype);
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + downFileName + "\"");
+		response.setContentLength(fSize);
 
-//		FileCopyUtils.copy(in, response.getOutputStream());
-//		in.close();
-//		uFile.delete(); // 파일삭제
-//		response.getOutputStream().flush();
-//		response.getOutputStream().close();
+		FileCopyUtils.copy(in, response.getOutputStream());
+		in.close();
+		uFile.delete(); // 파일삭제
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
+
 	}
 
 	// 엑셀출력
 	@RequestMapping("/deptExcelView.do")
 	public ModelAndView excelView(DeptSearchVO vo, HttpServletResponse response) throws IOException {
+
 		List<Map<String, Object>> list = deptService.getDeptListMap(vo);
-//		for (Map<String, Object> map : list) {
-//			Iterator<String> iter = map.keySet().iterator();
-//			while (iter.hasNext()) {
-//				String key = iter.next();
-//				String val = (String) map.get(key);
-//				System.out.printf("key %s, val %s", key, val);
-//			}
-//		}
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
 //		String[] header = { "departmentId", "departmentName", "managerId", "locationId" };
 		String[] header = { "부서번호", "부서명", "관리자", "위치" };
 		map.put("headers", header);
 		map.put("filename", "excel_dept");
 		map.put("datas", list);
+
 		return new ModelAndView("commonExcelView", map);
+
 	}
 
 }
