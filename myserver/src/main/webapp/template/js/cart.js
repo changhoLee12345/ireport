@@ -24,7 +24,7 @@ let basket = {
 	cartList: function () {
 		//fetch, $.ajax  <= petSHop 참조
 		//템플릿리터럴(``)을  이용하거나  cloneNode()로 노드를 복사해서 append
-		fetch("../cartSelectList")
+		fetch("./cartSelectList")
 			.then(response => response.json())
 			.then(result => this.makeList(result))
 			.catch(err => console.log(err));
@@ -59,7 +59,7 @@ let basket = {
 	delItem: function (e) {
 		console.log('delItem:', e);
 		let no = e.target.parentNode.parentNode.parentNode.dataset.id;
-		let url = "../cartDelete?no=" + no;
+		let url = "./cartDelete?no=" + no;
 		console.log(url);
 		fetch(url)
 			.then(result => {
@@ -112,7 +112,7 @@ let basket = {
 		if (val) {
 
 			// ajax call.
-			fetch('../cartUpdate', {
+			fetch('./cartUpdate', {
 					method: 'post',
 					headers: {
 						'Content-type': 'application/json;charset=utf-8'

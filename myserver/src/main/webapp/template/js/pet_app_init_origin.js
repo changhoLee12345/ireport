@@ -1,14 +1,14 @@
 App = {
 
-  init: async function() {
+  init: async function () {
     // Load pets.
-    $.getJSON('./resources/pets.json', function(data) {
+    $.getJSON('./resources/pets.json', function (data) {
       var petsRow = $('#petsRow');
       var petTemplate = $('#petTemplate');
 
-      for (i = 0; i < data.length; i ++) {
+      for (i = 0; i < data.length; i++) {
         petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', "resources/"+data[i].picture);
+        petTemplate.find('img').attr('src', "resources/" + data[i].picture);
         petTemplate.find('.pet-breed').text(data[i].breed);
         petTemplate.find('.pet-age').text(data[i].age);
         petTemplate.find('.pet-location').text(data[i].location);
@@ -21,25 +21,25 @@ App = {
     return await App.initContract();
   },
 
-  initContract: function() {
+  initContract: function () {
     /*
      * Replace me...
      */
-	
+
     return App.bindEvents();
   },
 
-  bindEvents: function() {
+  bindEvents: function () {
     $(document).on('click', '.btn-adopt', App.handleAdopt);
   },
 
-  markAdopted: function() {
+  markAdopted: function () {
     /*
      * Replace me...
      */
   },
 
-  handleAdopt: function(event) {
+  handleAdopt: function (event) {
     event.preventDefault();
 
     var petId = parseInt($(event.target).data('id'));
@@ -51,8 +51,8 @@ App = {
 
 };
 
-$(function() {
-  $(window).load(function() {
+$(function () {
+  $(window).load(function () {
     App.init();
   });
 });

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +9,7 @@
     <title>이벤트 리스너로 장바구니 수량 변경 및 자동 합계 구하기</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/cart.css" />
+    <link rel="stylesheet" href="./template/css/cart.css" />
 </head>
 
 <body>
@@ -37,7 +39,7 @@
             <div class="row data">
                 <div class="subdiv">
                     <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div>
-                    <div class="img"><img src="./img/basket1.jpg" width="60"></div>
+                    <div class="img"><img src="./template/img/basket1.jpg" width="60"></div>
                     <div class="pname">
                         <span>찜마마(XJ-92214/3)</span>
                     </div>
@@ -66,7 +68,7 @@
             <div class="row data">
                 <div class="subdiv">
                     <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div>
-                    <div class="img"><img src="./img/basket1.jpg" width="60"></div>
+                    <div class="img"><img src="./template/img/basket1.jpg" width="60"></div>
                     <div class="pname">
                         <span>찜마마(XJ-92214/3)</span>
                     </div>
@@ -95,7 +97,7 @@
             <div class="row data">
                 <div class="subdiv">
                     <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div>
-                    <div class="img"><img src="./img/basket1.jpg" width="60"></div>
+                    <div class="img"><img src="./template/img/basket1.jpg" width="60"></div>
                     <div class="pname">
                         <span>찜마마(XJ-92214/3)</span>
                     </div>
@@ -143,14 +145,14 @@
         <div class="row data">
             <div class="subdiv">
                 <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div>
-                <div class="img"><img src="./img/basket1.jpg" width="60"></div>
+                <div class="img"><img src="./template/img/basket1.jpg" width="60"></div>
                 <div class="pname">
                     <span>찜마마(XJ-92214/3)</span>
                 </div>
             </div>
             <div class="subdiv">
-                <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price"
-                        value="20000">20,000원</div>
+                <div class="basketprice">
+                	<input type="hidden" name="p_price" id="p_price1" class="p_price" value="20000">20,000원</div>
                 <div class="num">
                     <div class="updown">
                         <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2"
@@ -170,7 +172,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="./js/cart.js"></script>
+    <script type="text/javascript" src="./template/js/cart.js"></script>
 </body>
 
 </html>

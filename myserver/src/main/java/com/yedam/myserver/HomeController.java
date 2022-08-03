@@ -44,4 +44,9 @@ public class HomeController {
 		return "home";
 	}
 
+	@RequestMapping(value = "/cartList.do", method = RequestMethod.GET)
+	public String cartList() {
+		return "cart/cart";
+	}
+
 }

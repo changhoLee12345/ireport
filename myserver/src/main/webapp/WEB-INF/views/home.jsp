@@ -9,5 +9,7 @@
 	<h1>Hello world!</h1>
 
 	<P>The time on the server is ${serverTime}.</P>
+
+	<h3><a href="template/cart.html">cart</a></h3>
 </body>
 </html>
