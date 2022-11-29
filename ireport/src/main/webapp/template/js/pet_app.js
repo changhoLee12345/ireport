@@ -50,12 +50,13 @@ App = {
 
     fetch('')
       .then(function (instance) {
-
         // Execute adopt as a transaction by sending account
-        return adoptionInstance.adopt(petId, {from: account});
+        return adoptionInstance.adopt(petId, {
+          from: account
+        });
       }).then(function (result) {
         return App.markAdopted();
-        
+
       }).catch(function (err) {
         console.log(err.message);
       });
@@ -64,7 +65,10 @@ App = {
 };
 
 $(function () {
+  console.log('1')
   $(window).load(function () {
+    console.log('2')
     App.init();
   });
+  console.log('3')
 });
