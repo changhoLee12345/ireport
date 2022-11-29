@@ -14,8 +14,6 @@ Number.prototype.formatNumber = function () {
 	return nstr;
 };
 
-<<<<<<< HEAD
-=======
 // 1,000,000 => 1000000
 console.log('1,000,000'.replace(/,/g, ''))
 
@@ -48,36 +46,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 })
 
->>>>>>> branch 'master' of https://github.com/changhoLee12345/ireport.git
 let basket = {
 	cartCount: 0,
 	cartTotal: 0,
 	delCheckedItem: function () {
-<<<<<<< HEAD
-
-=======
 		document.querySelectorAll('input[name=buy]:checked').forEach(function (item) {
 			item.parentElement.parentElement.parentElement.remove()
 		})
 		this.reCalc();
 		this.updateUI();
->>>>>>> branch 'master' of https://github.com/changhoLee12345/ireport.git
 	},
 	delAllItem: function () {
-<<<<<<< HEAD
-
-	},
-	reCalc: function () {
-
-	},
-	updateUI: function () {
-
-	},
-	changePNum: function () {
-
-	},
-	delItem: function () {
-
 		document.querySelectorAll('.row.data').forEach(function (item) {
 			item.remove()
 		})
