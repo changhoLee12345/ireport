@@ -100,7 +100,7 @@ let basket = {
 	},
 	cartList: function () {
 		cartItems.forEach((item, idx) => {
-			let template = document.querySelector('.row.data.template').cloneNode(true);
+			let template = document.querySelector('#template>div.row.data').cloneNode(true);
 			template.style.display = 'block';
 			template.classList.remove('template')
 			template.querySelector('.pname>span').textContent = item.productNm
@@ -138,4 +138,12 @@ var cartItems = [{
 	}
 ]
 
-basket.cartList();
+fetch('cartSelectList')
+	.then(resolve => resolve.json())
+	.then(result => {
+		console.log(result);
+		basket.cartList();
+	})
+	.catch(err => console.log(err))
+	
+	
