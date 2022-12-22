@@ -10,11 +10,16 @@
 	<context:property-placeholder location="classpath:config/db.properties" />
 
 	<!-- DBCP class="org.apache.commons.dbcp2.BasicDataSource class="com.zaxxer.hikari.HikariDataSource"" -->
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${driver}" />
-		<property name="url" value="${url}" />
+		<property name="jdbcUrl" value="${url}" />
 		<property name="username" value="${user}" />
 		<property name="password" value="${password}" />
+	</bean>
+	
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
 
 	<!-- Mybatis -->
