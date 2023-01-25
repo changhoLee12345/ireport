@@ -25,7 +25,7 @@ public class RootConfig {
 		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
 		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@developerservice_medium?TNS_ADMIN=D:/Dev/Wallet_developerService");
 		hikariConfig.setUsername("test");
-		hikariConfig.setPassword("!Q2w3e4r5t6y7u");
+		hikariConfig.setPassword("");
 
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 
