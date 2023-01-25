@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	<select id="getList" resultType="org.zerock.domain.BoardVO">
+	<![CDATA[
+		select * from tbl_board where board_no > 0
+	]]>
+	</select>
+	
+	<insert id="insert">
+		insert into tbl_board (board_no, title, content, writer)
+		values (board_seq.nextval, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="board_No" order="BEFORE" resultType="long">
+			select board_seq.nextval from dual
+		</selectKey>
+		insert into tbl_board (board_no, title, content, writer)
+		values (#{board_No}, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board where board_no = #{board_no}
+	</select>
+</mapper>
