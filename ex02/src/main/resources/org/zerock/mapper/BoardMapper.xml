@@ -26,4 +26,18 @@
 	<select id="read" resultType="org.zerock.domain.BoardVO">
 		select * from tbl_board where board_no = #{board_no}
 	</select>
+	
+	<delete id="delete">
+		delete from tbl_board where board_no = #{board_no}
+	</delete>
+	
+	<update id="update">
+		update tbl_board
+		set title = #{title}
+		   ,content = #{content}
+		   ,writer = #{writer}
+		   ,write_date = sysdate
+		where board_no = #{board_No}
+	</update>
+	
 </mapper>

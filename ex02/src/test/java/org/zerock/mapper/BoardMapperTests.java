@@ -46,10 +46,28 @@ public class BoardMapperTests {
 
 		log.info(board);
 	}
-	
-	@Test
+
+//	@Test
 	public void readTest() {
 		BoardVO board = mapper.read(1L);
 		log.info(board);
 	}
+
+//	@Test
+	public void deleteTest() {
+		log.info("delete count: " + mapper.delete(1L));
+	}
+
+	@Test
+	public void updateTest() {
+		BoardVO board = new BoardVO();
+		board.setBoard_No(2L);
+		board.setTitle("test1L");
+		board.setContent("content1L");
+		board.setWriter("writer5L");
+		int count = mapper.update(board);
+
+		log.info(">>>>>>>>>>>>>update cnt: " + count);
+	}
+
 }

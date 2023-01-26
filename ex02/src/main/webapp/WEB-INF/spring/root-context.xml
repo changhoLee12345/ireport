@@ -10,7 +10,7 @@
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@developerservice_medium?TNS_ADMIN=D:/Dev/Wallet_developerService"></property>
 		<property name="username" value="test"></property>
-		<property name="password" value=""></property>
+		<property name="password" value="!Q2w3e4r5t6y7u"></property>
 	</bean>
 	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
