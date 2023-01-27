@@ -14,17 +14,17 @@
 		<property name="username" value="test"></property>
 		<property name="password" value="!Q2w3e4r5t6y7u"></property>
 	</bean>
-	
+
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
-	
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
+
 	<mybatis-spring:scan base-package="org.zerock.mapper"></mybatis-spring:scan>
-	
+
 	<context:component-scan base-package="org.zerock.service"></context:component-scan>
 
 </beans>
