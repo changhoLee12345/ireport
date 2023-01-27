@@ -6,7 +6,7 @@
 <mapper namespace="org.zerock.mapper.BoardMapper">
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 	<![CDATA[
-		select * from tbl_board where board_no > 0
+		select * from tbl_board where board_no > 0 order by 1 desc
 	]]>
 	</select>
 	
