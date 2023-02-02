@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-//@Log4j
+@Log4j
 @RequestMapping("/board/*")
 @AllArgsConstructor
 public class BoardController {
@@ -41,7 +41,7 @@ public class BoardController {
 
 	}
 
-	@GetMapping("/get")
+	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("bno") Long bno, Model model) {
 //		log.info("/get");
 		model.addAttribute("board", service.get(bno));
@@ -49,7 +49,7 @@ public class BoardController {
 
 	@PostMapping("/modify")
 	public String modify(BoardVO board, RedirectAttributes rttr) {
-//		log.info("modify:" + board);
+		log.info("modify:" + board);
 
 		if (service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
