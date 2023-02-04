@@ -64,7 +64,7 @@ public class BoardMapperTests {
 //	@Test
 	public void updateTest() {
 		BoardVO board = new BoardVO();
-		board.setBoard_No(2L);
+		board.setBno(2L);
 		board.setTitle("test1L");
 		board.setContent("content1L");
 		board.setWriter("writer5L");
@@ -72,13 +72,23 @@ public class BoardMapperTests {
 
 		log.info(">>>>>>>>>>>>>update cnt: " + count);
 	}
-	
-	@Test
+
+//	@Test
 	public void testPaging() {
 		Criteria cri = new Criteria();
 		cri.setPageNum(5);
 		cri.setAmount(10);
 		List<BoardVO> list = mapper.getListWithPaging(cri);
+		list.forEach(board -> log.info(board));
+	}
+
+	@Test
+	public void testSearch() {
+		Criteria cri = new Criteria();
+		cri.setKeyword("test");
+		cri.setType("TC");
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+
 		list.forEach(board -> log.info(board));
 	}
 

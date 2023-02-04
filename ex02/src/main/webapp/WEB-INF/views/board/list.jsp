@@ -36,24 +36,42 @@
                         <c:forEach var="board" items="${list }">
                             <tr>
                                 <td>
-                                    <c:out value="${board.board_No }" />
+                                    <a href='../board/get?bno=<c:out value="${board.bno }" />'>
+                                        <c:out value="${board.title }" /></a>
                                 </td>
                                 <td>
-                                    <c:out value="${board.title }" />
+                                    <a class="move" href="<c:out value="${board.bno }" />">
+                                    <c:out value="${board.title }" /></a>
                                 </td>
                                 <td>
                                     <c:out value="${board.writer }" />
                                 </td>
                                 <td>
-                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${board.write_Date }" />
+                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }" />
                                 </td>
                                 <td>
-                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${board.write_Date }" />
+                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate }" />
                                 </td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
+                <!-- page -->
+                <div class="pull-right">
+                    <ul class="pagination">
+                        <c:if test="${pageMaker.prev}">
+                            <li class="paginate_button previous"><a href="${pageMaker.startPage - 1 }">Previous</a></li>
+                        </c:if>
+                        <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                            <li class="paginate_button ${pageMaker.cri.pageNum==num ? 'active' : '' }">
+                                <a href="${num }">${num}</a></li>
+                        </c:forEach>
+                        <c:if test="${pageMaker.next}">
+                            <li class="paginate_button next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+                        </c:if>
+                    </ul>
+                </div>
+
                 <!-- Modal 창. -->
                 <div class="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel"
                     aria-hidden="true">
@@ -72,18 +90,7 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- /.table-responsive -->
-                <div class="well">
-                    <h4>DataTables Usage Information</h4>
-                    <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are
-                        using a specialized version of DataTables built for Bootstrap 3. We have also
-                        customized the table headings to use Font Awesome icons in place of images. For
-                        complete documentation on DataTables, visit their website at <a target="_blank"
-                            href="https://datatables.net/">https://datatables.net/</a>.</p>
-                    <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View
-                        DataTables Documentation</a>
-                </div>
             </div>
             <!-- /.panel-body -->
         </div>
@@ -91,6 +98,10 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
+<form action="../board/list" id="actionForm" method="get">
+    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+    <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+</form>
 <!-- /.row -->
 <script>
     $(document).ready(function () {
@@ -99,8 +110,12 @@
 
         checkModal(result);
 
+        history.replaceState({}, null, null);
+
         function checkModal(result) {
-            if (result == '')
+            console.log(history.state)
+
+            if (result == '' || history.state)
                 return;
 
             if (parseInt(result) > 0) {
@@ -111,6 +126,21 @@
 
         $('#regBtn').on('click', function () {
             self.location = '../board/register';
+        })
+
+        var actionForm = $('#actionForm');
+        $('.paginate_button a').on('click', function (e) {
+            e.preventDefault();
+            console.log('click');
+            actionForm.find('input[name="pageNum"]').val($(this).attr('href'));
+            actionForm.submit();
+        })
+
+        $('.move').on('click', function (e) {
+            e.preventDefault();
+            actionForm.append('<input type="hidden" name="bno" value="' + $(this).attr("href") + '" > ');
+            actionForm.attr('action', '../board/get');
+            actionForm.submit();
         })
     })
 </script>

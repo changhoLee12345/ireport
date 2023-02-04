@@ -33,7 +33,7 @@ public class BoardServiceTests {
 		board.setWriter("new writer");
 
 		service.register(board);
-		log.info("새로 작성된 글의 번호: " + board.getBoard_No());
+		log.info("새로 작성된 글의 번호: " + board.getBno());
 
 	}
 
