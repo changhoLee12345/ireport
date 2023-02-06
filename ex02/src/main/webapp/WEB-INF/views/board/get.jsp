@@ -19,7 +19,11 @@
 				<button data-oper="modify" class="btn btn-default">Modify</button>
 				<button data-oper="list" class="btn btn-info">List</button>
 				<form id="openForm" action="../board/modify" role="form" method="get">
-					<input type="hidden" name="bno" id="bno" value='<c:out value="${board.board_No}" />'>
+					<input type="hidden" name="bno" id="bno" value='<c:out value="${board.bno}" />'>
+					<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }" />'>
+					<input type="hidden" name="amount" value='<c:out value="${cri.amount }" />'>
+					<input type="hidden" name="keyword" value='<c:out value="${cri.keyword }" />'>
+					<input type="hidden" name="type" value='<c:out value="${cri.type }" />'>
 				</form>
 			</div>
 		</div>

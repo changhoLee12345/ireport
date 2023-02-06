@@ -10,10 +10,10 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@developerservice_medium?TNS_ADMIN=D:/Dev/Wallet_developerService"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
 <!-- 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@developerservice_medium?TNS_ADMIN=/home/homie/Downloads/Wallet_developerService"></property> -->
-		<property name="username" value="test"></property>
-		<property name="password" value="!Q2w3e4r5t6y7u"></property>
+		<property name="username" value="dev"></property>
+		<property name="password" value="dev"></property>
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">

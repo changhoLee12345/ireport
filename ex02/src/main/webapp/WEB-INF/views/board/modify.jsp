@@ -16,10 +16,14 @@
             <div class="panel-body">
 
                 <form role="form" action="../board/modify" method="post">
+                	<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }" />'>
+                	<input type="hidden" name="amount" value='<c:out value="${cri.amount }" />'>
+                	<input type="hidden" name="type" value='<c:out value="${cri.type }" />'>
+                	<input type="hidden" name="keyword" value='<c:out value="${cri.keyword }" />'>
                     <div class="form-group">
                         <label>Bno</label>
-                        <input type="text" class="form-control" name="board_No"
-                            value='<c:out value="${board.board_No}" />' readonly="readonly">
+                        <input type="text" class="form-control" name="bno"
+                            value='<c:out value="${board.bno}" />' readonly="readonly">
                     </div>
                     <div class="form-group">
                         <label>Title</label>
@@ -37,8 +41,14 @@
                     </div>
                     <div class="form-group">
                         <label>Regdate</label>
-                        <input type="text" class="form-group" name="write_Date"
-                            value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.write_Date}" />'
+                        <input type="text" class="form-group" name="regdate"
+                            value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.regdate}" />'
+                            readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>ModifyDate</label>
+                        <input type="text" class="form-group" name="updatedate"
+                            value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.updatedate}" />'
                             readonly="readonly">
                     </div>
 
@@ -66,7 +76,16 @@
                 // self.location = '../board/list';
                 // return;
                 formObj.attr('action', '../board/list').attr('method', 'get');
+                var pageNumTag = $("input[name='pageNum']").clone();
+                var amountTag = $("input[name='amount']").clone();
+                var keywordTag = $('input[name="keyword"]').clone();
+                var typeTag = $('input[name="type"]').clone();
+                
                 formObj.empty();
+                formObj.append(pageNumTag);
+                formObj.append(amountTag);
+                formObj.append(keywordTag);
+                formObj.append(typeTag);
             }
             formObj.submit();
         })
