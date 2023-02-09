@@ -12,8 +12,8 @@
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
 <!-- 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@developerservice_medium?TNS_ADMIN=/home/homie/Downloads/Wallet_developerService"></property> -->
-		<property name="username" value="dev"></property>
-		<property name="password" value="dev"></property>
+		<property name="username" value="prj"></property>
+		<property name="password" value="prj"></property>
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
