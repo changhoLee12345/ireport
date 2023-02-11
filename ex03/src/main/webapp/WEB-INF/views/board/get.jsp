@@ -73,8 +73,9 @@
 			<div class="modal-footer">
 				<button id="modalModBtn" class="btn btn-warning">Modify</button>
 				<button id="modalRemoveBtn" class="btn btn-danger">Remove</button>
+				<button id="modalRegisterBtn" class="btn btn-default">RegisterBtn</button>
 				<button id="modalCloseBtn" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button id="modalClassBtn" class="btn btn-default" data-dismiss="modal">Close</button>
+				<!-- <button id="modalClassBtn" class="btn btn-default" data-dismiss="modal">Close</button> -->
 			</div>
 		</div>
 	</div>
@@ -85,41 +86,6 @@
 <script>
 	console.log("==================")
 	var bnoValue = '<c:out value="${board.bno}" />';
-	// 추가기능 테스트.
-	// replyService.add({reply:"JS Test", replyer: "tester", bno: bnoValue}, 
-	// 		function (result) { alert("RESULT: " + result); });
-
-	// 댓글조회 테스트.
-	// replyService.getList({
-	// 	bno: bnoValue,
-	// 	page: 1
-	// }, function (list) {
-	// 	for (var i = 0, len = list.length || 0; i < len; i++) {
-	// 		console.log(list[i])
-	// 	}
-	// })
-
-	// replyService.remove(23, function (count) {
-	// 	console.log(count)
-
-	// 	if (count == 'success') {
-	// 		alert('REMOVED')
-	// 	}
-	// }, function (err) {
-	// 	alert('ERROR')
-	// })
-
-	// replyService.update({
-	// 	rno: 22,
-	// 	bno: bnoValue,
-	// 	reply: 'Modify reply',
-	// }, function (result) {
-	// 	alert('modfi done')
-	// })
-
-	// replyService.get(22, function (data) {
-	// 	console.log(data)
-	// })
 
 	$(document).ready(function () {
 
@@ -158,6 +124,111 @@
 			openForm.attr('action', '../board/list');
 			openForm.submit();
 		})
+
+		// modal
+		var modal = $('.modal');
+		var modalInputReply = modal.find('input[name="reply"]')
+		var modalInputReplyer = modal.find('input[name="replyer"]')
+		var modalInputReplyDate = modal.find('input[name="replyDate"]')
+
+		var modalModBtn = $('#modalModBtn')
+		var modalRemoveBtn = $('#modalRemoveBtn');
+		var modalRegisterBtn = $('#modalRegisterBtn');
+
+		$('#addReplyBtn').on('click', function (e) {
+			modal.find('input').val('')
+			modalInputReplyDate.closest('div').hide()
+			modal.find('button[id != "modalCloseBtn"]').hide();
+			modalRegisterBtn.show();
+			$('.modal').modal('show')
+		})
+
+		modalRegisterBtn.on('click', function (e) {
+			var reply = {
+				reply: modalInputReply.val(),
+				replyer: modalInputReplyer.val(),
+				bno: bnoValue
+			}
+			replyService.add(reply, function (result) {
+				alert(result);
+				modal.find('input').val('')
+				modal.modal('hide')
+
+				showList(1)
+			})
+		})
+
+		$('.chat').on('click', 'li', function (e) {
+			var rno = $(this).data('rno')
+			console.log(rno);
+			replyService.get(rno, function (reply) {
+				modalInputReply.val(reply.reply);
+				modalInputReplyer.val(reply.replyer);
+				modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr('readonly', 'readonly');
+				modal.data('rno', reply.rno);
+				
+				modal.find('button[id != "modalCloseBtn"]').hide()
+				modalModBtn.show();
+				modalRemoveBtn.show();
+				
+				$('.modal').modal('show');
+			})
+		})
+		
+		modalModBtn.on('click', function (e) {
+			var reply = {rno: modal.data('rno'), reply: modalInputReply.val() }
+			replyService.update(reply, function (result) {
+				alert(result);
+				modal.modal('hide');
+				showList(1)
+			})
+		})
+		
+		modalRemoveBtn.on('click', function (e) {
+			var rno = modal.data('rno');
+			replyService.remove(rno, function (result) {
+				alert(result);
+				modal.modal('hide');
+				showList(1)
+				
+			})
+		})
 	})
+
+	// 추가기능 테스트.
+	// replyService.add({reply:"JS Test", replyer: "tester", bno: bnoValue}, 
+	// 		function (result) { alert("RESULT: " + result); });
+
+	// 댓글조회 테스트.
+	// replyService.getList({
+	// 	bno: bnoValue,
+	// 	page: 1
+	// }, function (list) {
+	// 	for (var i = 0, len = list.length || 0; i < len; i++) {
+	// 		console.log(list[i])
+	// 	}
+	// })
+
+	// replyService.remove(23, function (count) {
+	// 	console.log(count)
+
+	// 	if (count == 'success') {
+	// 		alert('REMOVED')
+	// 	}
+	// }, function (err) {
+	// 	alert('ERROR')
+	// })
+
+	// replyService.update({
+	// 	rno: 22,
+	// 	bno: bnoValue,
+	// 	reply: 'Modify reply',
+	// }, function (result) {
+	// 	alert('modfi done')
+	// })
+
+	// replyService.get(22, function (data) {
+	// 	console.log(data)
+	// })
 </script>
 <%@ include file="../includes/footer.jsp" %>
