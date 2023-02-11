@@ -61,7 +61,7 @@ public class ReplyMapperTests {
 //	@Test
 	public void testUpdate() {
 		ReplyVO vo = new ReplyVO();
-		vo.setRno(2L);
+		vo.setRno(3L);
 		vo.setReply("update reply");
 
 		mapper.update(vo);
@@ -69,8 +69,8 @@ public class ReplyMapperTests {
 
 	@Test
 	public void listTest() {
-		Criteria cri = new Criteria();
-		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
+		Criteria cri = new Criteria(2, 10);
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, 3L);
 
 		replies.forEach(reply -> log.info(reply));
 	}
