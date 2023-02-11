@@ -23,8 +23,13 @@ public class SampleServiceTests {
 		log.info("test.........." + service.getClass().getName());
 	}
 
-	@Test
+//	@Test
 	public void testAdd() throws Exception {
-		log.info(service.doAdd("123","45"));
+		log.info(service.doAdd("123", "45"));
+	}
+
+	@Test
+	public void testAddError() throws Exception {
+		log.info(service.doAdd("123", "null"));
 	}
 }
