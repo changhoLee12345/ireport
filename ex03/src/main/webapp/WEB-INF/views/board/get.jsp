@@ -93,11 +93,25 @@
 		showList(1);
 
 		function showList(page) {
+			console.log("show list: " + page);
+			
 			replyService.getList({
 				bno: bnoValue,
 				page: page || 1
-			}, function (list) {
+			}, function (replyCnt, list) {
+				
+				console.log('replyCnt: ' + replyCnt)
+				console.log('list: ' + list);
+				console.log(list);
+				
+				if (page == -1) {
+					pageNum = Math.ceil(replyCnt / 10.0)
+					showList(pageNum);
+					return;
+				}
+				
 				var str = '';
+				
 				if (list == null || list.length == 0) {
 					replyUL.html('')
 					return;
