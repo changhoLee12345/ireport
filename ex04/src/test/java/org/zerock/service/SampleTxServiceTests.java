@@ -21,9 +21,12 @@ public class SampleTxServiceTests {
 	public void testLong() {
 		String str = "Starry\r\n" + "Starry\r\n" + "paint your pallentte blue and grey\r\n"
 				+ "look at a sujmmer'ks djklaf";
+//		str = "test ok";
 
+		log.info("startetttttttttttttttttttttttttt");
 		log.info(str.getBytes().length);
 		service.addData(str);
+		log.info("endddddddddddddddddddddddddddddddddd");
 
 	}
 }
