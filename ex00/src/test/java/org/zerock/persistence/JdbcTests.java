@@ -27,9 +27,7 @@ public class JdbcTests {
 
 	@Test
 	public void testConnection() {
-		try (Connection conn = DriverManager.getConnection(
-				"jdbc:oracle:thin:@developerservice_medium?TNS_ADMIN=D:/Dev/Wallet_developerService", "test",
-				"!Q2w3e4r5t6y7u")) {
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "dev", "dev")) {
 			log.info(conn);
 		} catch (Exception e) {
 			fail(e.getMessage());
