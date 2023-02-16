@@ -7,5 +7,7 @@ import lombok.Data;
 @Component
 @Data
 public class Chef {
-	
+	public Chef() {
+		System.out.println("Chef()");
+	}
 }

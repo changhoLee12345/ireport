@@ -10,6 +10,9 @@ import lombok.Setter;
 @Data
 public class Restaurant {
 
+	public Restaurant() {
+		System.out.println("Restautrant()");
+	}
 	@Setter(onMethod_ = @Autowired)
 	private Chef chef;
 }

@@ -17,6 +17,7 @@ import lombok.extern.log4j.Log4j;
 public class SampleHotels {
 
 	@Setter(onMethod_ = @Autowired)
+//	@Autowired
 	private Hotel hotel;
 
 	@Test
