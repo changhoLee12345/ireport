@@ -13,7 +13,7 @@ public class SampleController {
 
 	@GetMapping("/all")
 	public void doAll() {
-		log.info("do all can access");
+		log.info("do all can access everybody");
 	}
 
 	@GetMapping("/member")

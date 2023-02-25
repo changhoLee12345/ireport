@@ -9,10 +9,12 @@
 </head>
 
 <body>
-    <!-- only admin -->
-    <h3>sample/admin</h3>
+    <h1>Logout Page</h1>
 
-    <a href="/customLogout">Logout</a>
+    <form action="/customLogout" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button>로그아웃</button>
+    </form>
 </body>
 
 </html>

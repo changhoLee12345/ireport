@@ -21,6 +21,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			throws IOException, ServletException {
 
 		log.warn("Login success");
+
 		List<String> roleNames = new ArrayList<>();
 		auth.getAuthorities().forEach(authority -> {
 			roleNames.add(authority.getAuthority());
