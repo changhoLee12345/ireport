@@ -42,6 +42,10 @@
 	where employee_id = #{employee_id}
 </update>
 
+<select id="get" resultType="employee">
+    select * from employees where employee_id = #{employee_id}
+</select>
+
 <select id="findJobs" resultType="jobs">
 	select job_id, job_title 
 	  from jobs

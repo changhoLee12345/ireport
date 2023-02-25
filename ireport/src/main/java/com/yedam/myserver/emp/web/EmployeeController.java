@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,6 +59,11 @@ public class EmployeeController {
 	public Employee deleteEmployees(Employee bean, HttpServletResponse response) {
 		employeeDao.remove(bean);
 		return bean;
+	}
+
+	@RequestMapping(value = "/userFind/{userId}", method = RequestMethod.GET)
+	public Employee userFind(@PathVariable("userId") int user, HttpServletResponse response) {
+		return employeeDao.get(user);
 	}
 
 }
