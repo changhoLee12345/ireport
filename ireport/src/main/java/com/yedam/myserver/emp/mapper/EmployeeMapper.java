@@ -12,6 +12,7 @@ public interface EmployeeMapper {
 	int persist(Employee emp);			//사원등록
 	int merge(Employee emp);			//사원수정
 	int remove(Employee emp);			//사원삭제
+	Employee get(int eid);              //사원조회
 	
 	List<Jobs> findJobs();				//job검색
 	List<Departments> findDepartments();//부서검색
