@@ -1,5 +1,8 @@
 package org.zerock.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -70,10 +73,10 @@ public class BoardController {
 		if (service.modify(board)) {
 			rttr.addFlashAttribute("result", "게시글 " + board.getBno() + "번이 수정되었습니다.");
 		}
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword", cri.getAmount());
+//		rttr.addAttribute("pageNum", cri.getPageNum());
+//		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("type", cri.getType());
+//		rttr.addAttribute("keyword", cri.getAmount());
 
 		return "redirect:/board/list";
 	}
@@ -81,15 +84,19 @@ public class BoardController {
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("remove...." + bno);
+		List<BoardAttachVO> attachList = service.getAttachList(bno);
 		if (service.remove(bno)) {
+			// delete attach list
+			deleteFiles(attachList);
+
 			rttr.addFlashAttribute("result", "게시글 " + bno + "번이 삭제되었습니다.");
 		}
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword", cri.getAmount());
+//		rttr.addAttribute("pageNum", cri.getPageNum());
+//		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("type", cri.getType());
+//		rttr.addAttribute("keyword", cri.getAmount());
 
-		return "redirect:/board/list";
+		return "redirect:/board/list" + cri.getListLink();
 	}
 
 	@GetMapping(value = "/getAttachList", //
@@ -97,6 +104,32 @@ public class BoardController {
 	@ResponseBody
 	public ResponseEntity<List<BoardAttachVO>> getAttachList(Long bno) {
 		return new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
+	}
+
+	private void deleteFiles(List<BoardAttachVO> attachList) {
+		if (attachList == null || attachList.size() == 0) {
+			return;
+		}
+		log.info("delete attach files....");
+		log.info(attachList);
+		attachList.forEach(attach -> {
+			try {
+				Path file = Paths.get(
+						"C:\\upload\\" + attach.getUploadPath() + "\\" + attach.getUuid() + "_" + attach.getFileName());
+
+				Files.deleteIfExists(file);
+
+				if (Files.probeContentType(file).startsWith("image")) {
+					Path thumnail = Paths.get("C:\\upload\\" + attach.getUploadPath() + "\\s_" + attach.getUuid() + "_"
+							+ attach.getFileName());
+					Files.delete(thumnail);
+				}
+
+			} catch (Exception e) {
+				log.error("delete file error: " + e.getMessage());
+			}
+		});
+
 	}
 	//
 }
