@@ -15,7 +15,7 @@ Number.prototype.formatNumber = function () {
 };
 
 // 1,000,000 => 1000000
-console.log('1,000,000'.replace(/,/g, ''))
+console.log('1,000,000'.replace(/,/g, ''));
 
 document.addEventListener('DOMContentLoaded', function () {
 	//선택삭제.
@@ -69,12 +69,12 @@ let basket = {
 		this.cartCount = 0;
 		this.cartTotal = 0;
 		document.querySelectorAll('div.row.data:not(.template) .p_num').forEach(function (item) {
-			console.log(item, ',', item.getAttribute('value'))
+			//console.log(item, ',', item.getAttribute('value'))
 			var count = parseInt(item.getAttribute('value'));
 			this.cartCount += count;
 			var price = item.parentElement.parentElement.previousElementSibling.firstElementChild.getAttribute('value');
 			this.cartTotal += count * price;
-			console.log(this.cartTotal)
+			//console.log(this.cartTotal)
 		}, this)
 	},
 	updateUI: function () {
@@ -102,7 +102,7 @@ let basket = {
 		cartItems.forEach((item, idx) => {
 			let template = document.querySelector('#template>div.row.data').cloneNode(true);
 			template.style.display = 'block';
-			template.classList.remove('template')
+			template.classList.remove('template');
 			template.querySelector('.pname>span').textContent = item.productNm
 			template.querySelector('.basketprice>input').value = item.price
 			template.querySelector('.basketprice').childNodes[2].textContent = item.price.formatNumber() + "원"
@@ -110,7 +110,7 @@ let basket = {
 			template.querySelector('.updown>input').setAttribute('value', item.qty)
 			template.querySelector('.updown>input').setAttribute('id', 'p_num' + (idx + 1));
 			template.querySelector('.sum').textContent = (item.price * item.qty).formatNumber() + "원"
-			console.log(template)
+			//console.log(template)
 			document.querySelector('#basket').append(template)
 		})
 		this.reCalc();
@@ -141,9 +141,7 @@ var cartItems = [{
 fetch('cartSelectList')
 	.then(resolve => resolve.json())
 	.then(result => {
-		console.log(result);
+		//console.log(result);
 		basket.cartList();
 	})
 	.catch(err => console.log(err))
-	
-	

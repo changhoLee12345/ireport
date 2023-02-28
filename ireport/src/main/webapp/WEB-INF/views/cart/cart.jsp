@@ -36,7 +36,7 @@
                 <div class="split"></div>
             </div>
 
-            <div class="row data">
+            <div class="row data template">
                 <div class="subdiv">
                     <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div>
                     <div class="img"><img src="./template/img/basket1.jpg" width="60"></div>
@@ -51,10 +51,10 @@
                         <div class="updown">
                             <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2"
                                 onkeyup="javascript:basket.changePNum(1);">
-                            <span onclick="javascript:basket.changePNum(1);"><i
-                                    class="fas fa-arrow-alt-circle-up up"></i></span>
-                            <span onclick="javascript:basket.changePNum(1);"><i
-                                    class="fas fa-arrow-alt-circle-down down"></i></span>
+                            <span onclick="javascript:basket.changePNum(1);">
+                                <i class="fas fa-arrow-alt-circle-up up"></i></span>
+                            <span onclick="javascript:basket.changePNum(1);">
+                                <i class="fas fa-arrow-alt-circle-down down"></i></span>
                         </div>
                     </div>
                     <div class="sum">40,000원</div>
@@ -64,36 +64,6 @@
                             onclick="javascript:basket.delItem();">삭제</a></div>
                 </div>
             </div>
-
-            <!-- <div class="row data">
-                <div class="subdiv">
-                    <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div>
-                    <div class="img"><img src="./template/img/basket1.jpg" width="60"></div>
-                    <div class="pname">
-                        <span>찜마마(XJ-92214/3)</span>
-                    </div>
-                </div>
-                <div class="subdiv">
-                    <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price"
-                            value="20000">20,000원</div>
-                    <div class="num">
-                        <div class="updown">
-                            <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2"
-                                onkeyup="javascript:basket.changePNum(1);">
-                            <span onclick="javascript:basket.changePNum(1);"><i
-                                    class="fas fa-arrow-alt-circle-up up"></i></span>
-                            <span onclick="javascript:basket.changePNum(1);"><i
-                                    class="fas fa-arrow-alt-circle-down down"></i></span>
-                        </div>
-                    </div>
-                    <div class="sum">40,000원</div>
-                </div>
-                <div class="subdiv">
-                    <div class="basketcmd"><a href="javascript:void(0)" class="abutton"
-                            onclick="javascript:basket.delItem();">삭제</a></div>
-                </div>
-            </div> -->
-
 
         </div>
 
@@ -129,10 +99,10 @@
                     <div class="updown">
                         <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2"
                             onkeyup="javascript:basket.changePNum(1);">
-                        <span onclick="javascript:basket.changePNum(1);"><i
-                                class="fas fa-arrow-alt-circle-up up"></i></span>
-                        <span onclick="javascript:basket.changePNum(1);"><i
-                                class="fas fa-arrow-alt-circle-down down"></i></span>
+                        <span onclick="javascript:basket.changePNum(1);">
+                            <i class="fas fa-arrow-alt-circle-up up"></i></span>
+                        <span onclick="javascript:basket.changePNum(1);">
+                            <i class="fas fa-arrow-alt-circle-down down"></i></span>
                     </div>
                 </div>
                 <div class="sum">40,000원</div>
