@@ -5,12 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="./resources/script.js"></script>
-<script>
-  console.log(sum(1,2));
-</script>
 </head>
 <body>
- <p>info page</p>
+ <p>page1</p>
 </body>
 </html>

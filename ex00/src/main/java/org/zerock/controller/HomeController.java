@@ -41,4 +41,9 @@ public class HomeController {
 		return "info/info";
 	}
 
+	@RequestMapping(value = "/url/page1")
+	public void url() {
+		System.out.println("url");
+	}
+
 }
