@@ -43,8 +43,7 @@ public class BoardControlTests {
 		)//
 				.andReturn()//
 				.getModelAndView()//
-				.getModelMap()//
-		;
+				.getModelMap();
 
 		log.info(result);
 	}
@@ -59,8 +58,7 @@ public class BoardControlTests {
 		)//
 				.andReturn()//
 				.getModelAndView()//
-				.getViewName()//
-		;
+				.getViewName();
 
 		log.info(result);
 
@@ -72,8 +70,7 @@ public class BoardControlTests {
 				.param("bno", "1"))//
 				.andReturn()//
 				.getModelAndView()//
-				.getModelMap()//
-		;
+				.getModelMap();
 
 		log.info(result);
 	}
@@ -89,8 +86,7 @@ public class BoardControlTests {
 		)//
 				.andReturn()//
 				.getModelAndView()//
-				.getViewName()//
-		;
+				.getViewName();
 
 		log.info(result);
 	}
@@ -103,8 +99,7 @@ public class BoardControlTests {
 		)//
 				.andReturn()//
 				.getModelAndView()//
-				.getViewName()//
-		;
+				.getViewName();
 
 		log.info(result);
 	}

@@ -46,7 +46,7 @@ public class SampleControlTests {
 		ticket.setGrade("AAA");
 
 		String json = new Gson().toJson(ticket);
-		log.info(json);
+		log.info("HEHE:" + json);
 
 		mockMvc.perform(post("/sample/ticket")//
 				.contentType(MediaType.APPLICATION_JSON).content(json))//
