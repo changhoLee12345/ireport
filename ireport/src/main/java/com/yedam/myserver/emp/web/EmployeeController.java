@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yedam.myserver.emp.mapper.EmployeeMapper;
-import com.yedam.myserver.emp.vo.Departments;
+import com.yedam.myserver.emp.mapper.EmployeeMapper; 
 import com.yedam.myserver.emp.vo.Employee;
 
 @RestController
@@ -28,6 +27,7 @@ public class EmployeeController {
 	// 사원검색
 	@RequestMapping(value = "/empSelect")
 	public List<Employee> selectDepartment() {
+		logger.info("start");
 		return employeeDao.findEmployees();
 	}
 

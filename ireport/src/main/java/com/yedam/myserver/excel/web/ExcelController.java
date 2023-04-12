@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public class ExcelController {
 	// 엑셀출력
 	@RequestMapping("/deptExcelCreate.do")
 	public void excelCreate(DeptSearchVO vo, HttpServletResponse response) throws IOException {
-
+		logger.info("start");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;utf-8");
 
