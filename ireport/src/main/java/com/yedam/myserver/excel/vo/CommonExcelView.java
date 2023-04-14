@@ -49,7 +49,7 @@ public class CommonExcelView extends AbstractXlsxView {
 		List<Map<String, Object>> list = (List<Map<String, Object>>) model.get("datas");
 		System.out.println(list);
 		if (headers != null) {
-			
+
 			for (Map<String, Object> map : list) {
 				row = sheet.createRow(rowNum++);
 				int colNum = 0;
@@ -74,9 +74,9 @@ public class CommonExcelView extends AbstractXlsxView {
 
 				}
 			}
-			
+
 		} else {
-			
+
 			for (Map<String, Object> map : list) {
 				row = sheet.createRow(rowNum++);
 				int colNum = 0;
@@ -95,7 +95,7 @@ public class CommonExcelView extends AbstractXlsxView {
 					}
 				}
 			}
-			
+
 		}
 
 		LOGGER.debug("### buildExcelDocument Map : {} end!!");
