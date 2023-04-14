@@ -18,6 +18,7 @@ public class CartController {
 	// 장바구니 전체조회
 	@RequestMapping("/cartSelectList")
 	public List<CartVO> cartSelectList() {
+//		mapper.findAll()
 		return mapper.findAll();
 	}
 

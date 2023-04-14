@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="./template/js/cart.js"></script>
+    <script type="text/javascript" src="/template/js/cart.js"></script>
 </body>
 
 </html>
