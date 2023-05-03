@@ -26,7 +26,8 @@
 				</div>
 				<div class="form-group">
 					<label>Content</label>
-					<textarea class="form-control" rows="3" name="content" readonly><c:out value="${board.content }" /></textarea>
+					<textarea class="form-control" rows="3" name="content"
+						readonly><c:out value="${board.content }" /></textarea>
 				</div>
 				<div class="form-group">
 					<label>Writer</label><input class="form-control" name="writer" readonly value="${board.writer }">
@@ -257,8 +258,10 @@
 
 					for (var i = 0, len = list.length || 0; i < len; i++) {
 						str += '<li class="left clearfix" data-rno="' + list[i].rno + '">';
-						str += ' <div><div class="header"><strong class="primary=font">' + list[i].replyer + '</strong>';
-						str += '    <small class="pull-right text-muted">' + replyService.displayTime(list[i].replyDate) + '</small></div>';
+						str += ' <div><div class="header"><strong class="primary=font">' + list[i].replyer +
+							'</strong>';
+						str += '    <small class="pull-right text-muted">' + replyService.displayTime(list[i]
+							.replyDate) + '</small></div>';
 						str += '    <p>' + list[i].reply + '</p></div></li>';
 					}
 					replyUL.html(str);
@@ -315,7 +318,8 @@
 			replyService.get(rno, function (reply) {
 				modalInputReply.val(reply.reply);
 				modalInputReplyer.val(reply.replyer);
-				modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr('readonly', 'readonly');
+				modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr('readonly',
+					'readonly');
 				modal.data('rno', reply.rno);
 
 				modal.find('button[id != "modalCloseBtn"]').hide();
@@ -367,11 +371,13 @@
 			var str = '<ul class="pagination pull-right">';
 
 			if (prev) {
-				str += '<li class="page-item"><a class="page-link" href="' + (startNum - 1) + '" >Previous</a></li>';
+				str += '<li class="page-item"><a class="page-link" href="' + (startNum - 1) +
+					'" >Previous</a></li>';
 			}
 			for (var i = startNum; i <= endNum; i++) {
 				var active = pageNum == i ? 'active' : '';
-				str += '<li class="page-item ' + active + '"><a class="page-link" href="' + i + '">' + i + '</a></li>'
+				str += '<li class="page-item ' + active + '"><a class="page-link" href="' + i + '">' + i +
+					'</a></li>'
 			}
 			if (next) {
 				str += '<li class="page-item"><a class="page-link" href="' + (endNum + 1) + '">Next</a></li>';
@@ -398,16 +404,21 @@
 
 			$(arr).each(function (i, attach) {
 				if (attach.fileType) {
-					var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_" + attach.uuid + "_" + attach.fileName);
+					var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_" + attach.uuid +
+						"_" + attach.fileName);
 
-					str += "<li data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' data-type='" + attach.fileType + "' ><div>";
-					console.log(fileCallPath);	
+					str += "<li data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid +
+						"' data-filename='" + attach.fileName + "' data-type='" + attach.fileType +
+						"' ><div>";
+					console.log(fileCallPath);
 					str += "<img src='/display?fileName=" + fileCallPath + "'>";
 					str += "</div>";
 					str += "</li>";
 
 				} else {
-					str += "<li data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' data-type='" + attach.fileType + "' ><div>";
+					str += "<li data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid +
+						"' data-filename='" + attach.fileName + "' data-type='" + attach.fileType +
+						"' ><div>";
 					str += "<span> " + attach.fileName + "</span><br>";
 					str += "<img src='/resources/img/attach.png'>";
 					str += "</div>";
@@ -423,7 +434,8 @@
 		$('.uploadResult').on('click', 'li', function (e) {
 			var liObj = $(this);
 			console.log('view image', liObj.data('path'));
-			var path = encodeURIComponent(liObj.data('path') + "/" + liObj.data('uuid') + "_" + liObj.data('filename'));
+			var path = encodeURIComponent(liObj.data('path') + "/" + liObj.data('uuid') + "_" + liObj.data(
+				'filename'));
 
 			if (liObj.data('type')) {
 				showImage(path.replace(new RegExp(/\\/g), "/"));
@@ -436,13 +448,19 @@
 			//alert(fileCallPath)
 			$('.bigPictureWrapper').css('display', 'flex').show();
 			$('.bigPicture')
-			.html('<img src="/display?fileName=' + fileCallPath + '">')
-			.animate({width: '100%', height: '100%'}, 1000);
+				.html('<img src="/display?fileName=' + fileCallPath + '">')
+				.animate({
+					width: '100%',
+					height: '100%'
+				}, 1000);
 
 		}
 
 		$('.bigPictureWrapper').on('click', function (e) {
-			$('.bigPicture').animate({width: '0%', height: '0%'}, 1000);
+			$('.bigPicture').animate({
+				width: '0%',
+				height: '0%'
+			}, 1000);
 			setTimeout(function () {
 				$('.bigPictureWrapper').hide();
 			}, 1000);
