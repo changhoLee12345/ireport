@@ -10,6 +10,7 @@ import lombok.Setter;
 @Data
 public class Restaurant {
 
+//	@Autowired
 	public Restaurant() {
 		System.out.println("Restaurant() call.");
 	}

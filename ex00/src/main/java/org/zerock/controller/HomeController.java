@@ -38,12 +38,13 @@ public class HomeController {
 
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String info() {
+		System.out.println("/info");
 		return "info/info";
 	}
 
 	@RequestMapping(value = "/url/page1")
 	public void url() {
-		System.out.println("url");
+		System.out.println("/url/page1");
 	}
 
 }
