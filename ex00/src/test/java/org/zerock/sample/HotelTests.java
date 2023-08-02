@@ -14,20 +14,19 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-public class SampleTests {
+public class HotelTests {
 
-//	@Log4j => private static final java.util.logging.Logger log = java.util.logging.Logger.getLogger(SampleTests.class.getName());
-//	의 log 객체를 선언하는 기능이 실현됨.
+//	@Autowired
 
 	@Setter(onMethod_ = @Autowired)
-	private Restaurant restaurant;
+	private SampleHotel hotel;
 
 	@Test
 	public void testExist() {
-		assertNotNull(restaurant);
+		assertNotNull(hotel);
 
-		log.info(restaurant);
-		log.info("------------------------");
-		log.info(restaurant.getChef());
+		log.info(hotel);
+		log.info("---------------");
+		log.info(hotel.getChef());
 	}
 }
