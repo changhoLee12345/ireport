@@ -73,8 +73,8 @@ public class BoardController {
 		if (service.modify(board)) {
 			rttr.addFlashAttribute("result", "게시글 " + board.getBno() + "번이 수정되었습니다.");
 		}
-//		rttr.addAttribute("pageNum", cri.getPageNum());
-//		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 //		rttr.addAttribute("type", cri.getType());
 //		rttr.addAttribute("keyword", cri.getAmount());
 
@@ -91,8 +91,8 @@ public class BoardController {
 
 			rttr.addFlashAttribute("result", "게시글 " + bno + "번이 삭제되었습니다.");
 		}
-//		rttr.addAttribute("pageNum", cri.getPageNum());
-//		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 //		rttr.addAttribute("type", cri.getType());
 //		rttr.addAttribute("keyword", cri.getAmount());
 

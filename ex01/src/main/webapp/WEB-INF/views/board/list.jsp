@@ -165,6 +165,7 @@
         	actionForm.submit();
         })
         
+        // 게시글 번호 조회시 pageNum, amout 를 전송하는 폼.
         $('.move').on('click', function (e) {
         	e.preventDefault();
         	actionForm.append('<input type="hidden" name="bno" value="' + $(this).attr('href') + '" >');
