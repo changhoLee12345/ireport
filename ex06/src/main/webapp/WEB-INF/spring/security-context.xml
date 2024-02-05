@@ -20,7 +20,7 @@
 
 		<!-- <security:form-login /> -->
 		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess" />
-		<security:logout logout-url="/customLogout" invalidate-session="true" />
+		<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" />
 
 		<!-- <security:csrf disabled="true" /> -->
 

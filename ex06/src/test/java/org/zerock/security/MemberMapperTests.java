@@ -25,7 +25,7 @@ public class MemberMapperTests {
 		MemberVO vo = mapper.read("admin90");
 		log.info("vo: " + vo);
 
-		vo.getAuthList().forEach(authVO -> log.info("lch" + authVO));
+		vo.getAuthlist().forEach(authVO -> log.info("lch" + authVO));
 	}
 
 }

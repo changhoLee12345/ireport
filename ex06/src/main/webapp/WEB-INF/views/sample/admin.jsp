@@ -16,12 +16,9 @@
     <h3>sample/admin</h3>
     
     <p>Principal : <sec:authentication property="principal" />
-    <p>MemberVO : <sec:authentication property="principal.member" />
-    <p>Name : <sec:authentication property="principal.member.userName" />
-    <p>Id : <sec:authentication property="principal.member.user" />
-    <p>Auth : <sec:authentication property="principal.member.authList" />
+    <p>Principal : <sec:authentication property="principal.Username" />
 
-    <a href="/customLogout">Logout</a>
+    <p><a href="/customLogout">Logout</a></p>
 </body>
 
 </html>

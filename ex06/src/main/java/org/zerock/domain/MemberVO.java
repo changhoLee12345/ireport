@@ -9,10 +9,10 @@ import lombok.Data;
 public class MemberVO {
 	private String userid;
 	private String userpw;
-	private String userName;
+	private String username;
 	private boolean enabled;
 
-	private Date regData;
-	private Date updateDate;
-	private List<AuthVO> authList;
+	private Date regdate;
+	private Date updatedate;
+	private List<AuthVO> authlist;
 }
