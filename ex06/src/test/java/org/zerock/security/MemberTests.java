@@ -2,6 +2,7 @@ package org.zerock.security;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
@@ -28,6 +29,44 @@ public class MemberTests {
 	private DataSource ds;
 
 	@Test
+	public void testInsertAuth() {
+		String sql = "insert into tbl_member_auth(userid, auth) values(?,?)";
+
+		for (int i = 0; i < 100; i++) {
+			Connection conn = null;
+			PreparedStatement psmt = null;
+
+			try {
+				conn = ds.getConnection();
+				psmt = conn.prepareStatement(sql);
+
+				if (i < 80) {
+					psmt.setString(1, "user" + i);
+					psmt.setString(2, "ROLE_USER");
+				} else if (i < 90) {
+					psmt.setString(1, "manager" + i);
+					psmt.setString(2, "ROLE_MEMBER");
+				} else {
+					psmt.setString(1, "admin" + i);
+					psmt.setString(2, "ROLE_ADMIN");
+				}
+				psmt.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (conn != null)
+						conn.close();
+					if (psmt != null)
+						psmt.close();
+				} catch (Exception e) {
+
+				}
+			}
+		} // end of for.
+	} // end of testInsertAuth()
+
 	public void testInsertMember() {
 		String sql = "insert into tbl_member(userid, userpw, username) values(?,?,?)";
 
@@ -37,7 +76,8 @@ public class MemberTests {
 
 			try {
 				conn = ds.getConnection();
-				psmt = con.preparedStatement(sql);
+				psmt = conn.prepareStatement(sql);
+
 				psmt.setString(2, pwencoder.encode("pw" + i));
 				if (i < 80) {
 					psmt.setString(1, "user" + i);
@@ -53,6 +93,7 @@ public class MemberTests {
 
 				}
 				psmt.executeUpdate();
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
