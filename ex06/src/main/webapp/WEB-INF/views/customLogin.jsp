@@ -19,8 +19,8 @@
 	</h2>
 
 	<form action="/login" method="post">
-		<div><input type="text" name="username" value="admin"></div>
-		<div><input type="password" name="password" value="admin"></div>
+		<div><input type="text" name="username" value="admin00"></div>
+		<div><input type="password" name="password" value="pw00"></div>
 		<div><input type="submit" value="Login"></div>
 		<input type="hidden" name="${_csrf.parameterName}" value="${csrf.token}" />
 	</form>
