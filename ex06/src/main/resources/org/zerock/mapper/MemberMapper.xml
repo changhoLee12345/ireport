@@ -20,12 +20,12 @@
 		<result property="auth" column="auth" />
 	</resultMap>
 
-	<select id="memberMap" resultMap="memberMap">
+	<select id="read" resultMap="memberMap" parameterType="string">
 		select mem.userid, userpw, username, enabled, regdate, updatedate, auth
 		from   tbl_member mem
 		left outer join tbl_member_auth auth
 		on mem.userid = auth.userid
-		where mem.userid = ${userid}
+		where mem.userid = #{userid}
 	</select>
 	
 </mapper>
