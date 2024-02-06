@@ -84,6 +84,13 @@
     <!-- Custom Theme JavaScript -->
     <script src="/resources/dist/js/sb-admin-2.js"></script>
 
+    <script>
+        $('.btn-success').on('click', function (e) {
+            e.preventDefault();
+            $('form').submit();
+        })
+    </script>
+
 </body>
 
 </html>
