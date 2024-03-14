@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +27,9 @@ public class DataSourceTests {
 	@Setter(onMethod_ = @Autowired)
 	private DataSource dataSource;
 
-	@Test
+	@Setter(onMethod_ = @Autowired)
+	private SqlSessionFactory sqlSessionFactory;
+
 	public void testConnection() {
 		log.info("start: " + System.currentTimeMillis());
 		try {
@@ -36,5 +39,16 @@ public class DataSourceTests {
 			e.printStackTrace();
 		}
 		log.info("end  : " + System.currentTimeMillis());
+	}
+
+	@Test
+	public void testMybatis() {
+		try (SqlSession session = sqlSessionFactory.openSession(); //
+				Connection conn = session.getConnection();) {
+			log.info(session);
+			log.info(conn);
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
 	}
 }

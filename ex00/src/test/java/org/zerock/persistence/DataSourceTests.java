@@ -27,7 +27,6 @@ public class DataSourceTests {
 	@Setter(onMethod_ = @Autowired)
 	private SqlSessionFactory sqlSessionFactory;
 
-	@Test
 	public void testConnection() {
 		log.info("start: " + System.currentTimeMillis());
 		try {
@@ -39,6 +38,7 @@ public class DataSourceTests {
 		log.info("end  : " + System.currentTimeMillis());
 	}
 
+	@Test
 	public void testMybatis() {
 
 		log.info("start: " + System.currentTimeMillis());
